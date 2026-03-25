@@ -653,7 +653,7 @@ if run:
     if recommendation_is_broken(executive_text):
         executive_text = fallback_recommendation(llm_input_df)
 
-    st.markdown("### 🎙️ Live Debate")
+    st.markdown("### 🎙️ Simulated Boardroom Debate")
     st.caption(f"Debating top {top_n} campaigns based on {sort_by}.")
 
     render_chat_bubbles(debate_text)
