@@ -1,14 +1,12 @@
 import os
-from dotenv import load_dotenv
 from groq import Groq
 
-load_dotenv()
 
 def get_groq_client():
     api_key = os.getenv("GROQ_API_KEY")
 
     if not api_key:
-        raise ValueError("GROQ_API_KEY not found. Check your .env file")
+        raise ValueError("GROQ_API_KEY not found. Check your environment or Streamlit secrets.")
 
     return Groq(api_key=api_key)
 
@@ -23,7 +21,7 @@ def generate_response(prompt):
             {"role": "user", "content": prompt}
         ],
         temperature=0.4,
-        max_tokens=450
+        max_completion_tokens=450
     )
 
     return response.choices[0].message.content
